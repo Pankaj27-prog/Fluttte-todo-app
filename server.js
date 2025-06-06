@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 });
 
 // Serve static files from the build/web directory
-app.use(express.static(path.join(__dirname, 'build/web'), {
+app.use(express.static(path.join(__dirname, 'build', 'web'), {
   maxAge: '1y',
   etag: true,
   lastModified: true,
@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'build/web'), {
 
 // Handle all routes by serving index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build/web/index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'web', 'index.html'));
 });
 
 // Error handling
@@ -37,4 +37,5 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
   console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${port}`);
   console.log(`App URL: ${process.env.FLUTTER_WEB_APP_URL || 'http://localhost:' + port}`);
+  console.log(`Serving files from: ${path.join(__dirname, 'build', 'web')}`);
 }); 
