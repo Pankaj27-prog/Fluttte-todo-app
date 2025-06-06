@@ -58,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           // App Logo/Icon
-                          Icon(
+                          const Icon(
                             Icons.task_alt,
                             size: 80,
                             color: Colors.white,

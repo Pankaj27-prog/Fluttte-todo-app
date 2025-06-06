@@ -3,7 +3,15 @@ services:
     name: todo-app
     env: node
     buildCommand: npm install
-    startCommand: npm start
+    startCommand: node server.js
     envVars:
       - key: NODE_ENV
-        value: production 
+        value: production
+      - key: PORT
+        value: 3000
+      - key: FLUTTER_WEB_APP_URL
+        value: https://todo-app.onrender.com
+      - key: FLUTTER_WEB_APP_NAME
+        value: Todo App
+      - key: FLUTTER_WEB_APP_DESCRIPTION
+        value: A simple and elegant todo application 
