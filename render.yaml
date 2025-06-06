@@ -5,13 +5,34 @@ services:
     buildCommand: npm install
     startCommand: node server.js
     envVars:
+      # Server Configuration
       - key: NODE_ENV
         value: production
       - key: PORT
         value: 3000
+      
+      # Application Information
       - key: FLUTTER_WEB_APP_URL
         value: https://todo-app.onrender.com
       - key: FLUTTER_WEB_APP_NAME
         value: Todo App
       - key: FLUTTER_WEB_APP_DESCRIPTION
-        value: A simple and elegant todo application 
+        value: A simple and elegant todo application
+      
+      # Performance Settings
+      - key: CACHE_DURATION
+        value: 86400  # 24 hours in seconds
+      - key: MAX_REQUESTS_PER_MINUTE
+        value: 100
+      
+      # Security Settings
+      - key: ENABLE_HTTPS
+        value: true
+      - key: ALLOWED_ORIGINS
+        value: https://todo-app.onrender.com
+      
+      # Feature Flags
+      - key: ENABLE_ANALYTICS
+        value: false
+      - key: ENABLE_NOTIFICATIONS
+        value: true 
