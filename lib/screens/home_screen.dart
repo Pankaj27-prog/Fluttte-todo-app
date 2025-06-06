@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:todo/screens/login_screen.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   final bool isDarkMode;
   final VoidCallback onToggleTheme;
 
@@ -14,6 +14,11 @@ class HomeScreen extends StatelessWidget {
   });
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
@@ -21,7 +26,7 @@ class HomeScreen extends StatelessWidget {
           // Background Image
           SizedBox.expand(
             child: Image.asset(
-              'assets/bg_office.png',
+              'assets/images/bg_office.png',
               fit: BoxFit.cover,
             ),
           ),
@@ -41,10 +46,10 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       IconButton(
                         icon: Icon(
-                          isDarkMode ? Icons.wb_sunny : Icons.nightlight_round,
-                          color: isDarkMode ? Colors.yellow : Colors.white,
+                          widget.isDarkMode ? Icons.wb_sunny : Icons.nightlight_round,
+                          color: widget.isDarkMode ? Colors.yellow : Colors.white,
                         ),
-                        onPressed: onToggleTheme,
+                        onPressed: widget.onToggleTheme,
                       ),
                     ],
                   ),
@@ -62,10 +67,7 @@ class HomeScreen extends StatelessWidget {
                             Icons.task_alt,
                             size: 80,
                             color: Colors.white,
-                          )
-                              .animate()
-                              .fadeIn(duration: 600.ms)
-                              .scale(delay: 200.ms),
+                          ),
                           const SizedBox(height: 24),
                           // Title
                           const Text(
@@ -75,10 +77,7 @@ class HomeScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
-                          )
-                              .animate()
-                              .fadeIn(delay: 400.ms)
-                              .slideY(begin: 0.3, end: 0),
+                          ),
                           const SizedBox(height: 16),
                           // Subtitle
                           const Text(
@@ -88,10 +87,7 @@ class HomeScreen extends StatelessWidget {
                               fontSize: 18,
                               color: Colors.white70,
                             ),
-                          )
-                              .animate()
-                              .fadeIn(delay: 600.ms)
-                              .slideY(begin: 0.3, end: 0),
+                          ),
                           const SizedBox(height: 40),
                           // Get Started Button
                           ElevatedButton(
@@ -112,8 +108,8 @@ class HomeScreen extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => LoginScreen(
-                                    isDarkMode: isDarkMode,
-                                    onToggleTheme: onToggleTheme,
+                                    isDarkMode: widget.isDarkMode,
+                                    onToggleTheme: widget.onToggleTheme,
                                   ),
                                 ),
                               );
@@ -125,10 +121,17 @@ class HomeScreen extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                          )
-                              .animate()
-                              .fadeIn(delay: 800.ms)
-                              .scale(delay: 1000.ms),
+                          ),
+                          const SizedBox(height: 24),
+                          // Demo Credentials
+                          const Text(
+                            'Demo Credentials:\nUsername: user\nPassword: password123',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 14,
+                            ),
+                          ),
                         ],
                       ),
                     ),
